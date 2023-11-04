@@ -1,13 +1,36 @@
 .table
     margin-top: 50px
+    width: 100%
     thead
         color: var(--Gray, #6D717F)
-        border-color: red
-
+        th
+           
     tbody
         font-weight: 600
         tr
-        input
-            width: 300px
-            padding: 13px 8px
-            margin-right: 80px
+            td
+                &:nth-child(1)
+                    width: 40%
+                &:nth-child(2)
+                    width: 40%
+                    input
+                        width: 100%
+                        padding: 13px 8px
+                &:nth-child(3)
+                    width: 20%
+                    img
+                        display: block
+                        margin: auto
+                        cursor: pointer
+
+
+
+.levelInput
+    appearance: none
+    border: 1px solid #ccc
+    border-radius: 4px
+    padding: 10px
+    width: 100%
+
+.deleteIcon
+    cursor: pointer

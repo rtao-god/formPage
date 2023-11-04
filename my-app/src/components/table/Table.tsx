@@ -1,28 +1,49 @@
-import React from 'react'
-import cl from "./index.module.sass"
-import imgTrash from "../../photo/icons/trash.jpg"
+import React from 'react';
+import cl from './index.module.sass';
+import imgTrash from "../../photo/icons/trash.jpg";
 
-export default function Table() {
+type Operator = {
+    name: string;
+}
+
+type TableProps = {
+    selectedOperators: Operator[];
+    onDeleteOperator: (operatorName: string) => void;
+}
+
+const Table: React.FC<TableProps> = ({ selectedOperators, onDeleteOperator }) => {
+    const generateOptions = () => {
+        return Array.from({ length: selectedOperators.length }, (_, i) => (
+            <option key={i + 1} value={i + 1}>{i + 1}</option>
+        ));
+    };
+
     return (
         <table className={cl.table}>
             <thead>
                 <tr>
-                    <th> Operator </th>
-                    <th> Level </th>
+                    <th>Operator</th>
+                    <th>Level</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td> Harry </td>
-                    <td> <input /> </td>
-                    <td> <img src={imgTrash} alt="" /> </td>
-                </tr>
-                <tr>
-                    <td> Jake </td>
-                    <td> <input /> </td>
-                    <td> <img src={imgTrash} alt="" /> </td>
-                </tr>
+                {selectedOperators.map(operator => (
+                    <tr key={operator.name}>
+                        <td>{operator.name}</td>
+                        <td>
+                            <select className={cl.levelInput}>
+                                {generateOptions()}
+                            </select>
+                        </td>
+                        <td onClick={() => onDeleteOperator(operator.name)}>
+                            <img src={imgTrash} alt="Delete" className={cl.deleteIcon} />
+                        </td>
+                    </tr>
+                ))}
             </tbody>
         </table>
-    )
-}
+    );
+};
+
+export default Table;

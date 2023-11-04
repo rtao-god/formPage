@@ -1,9 +1,6 @@
-import React, { useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import InputForm from './components/inputForm/InputForm'
-import OperatorsList from './components/multiselect/OperatorsList';
-import TableList from './components/table/tableList';
+import ParentComponent from './components/ParentComponent';
 
 function App() {
 
@@ -11,8 +8,7 @@ function App() {
     <div className="App">
       <h1> Department information </h1>
       <InputForm />
-      <OperatorsList />
-      <TableList />
+      <ParentComponent />
       <button className="btnSave"> Save </button>
     </div>
   );
