@@ -26,6 +26,8 @@ const Table: React.FC<TableProps> = ({ selectedOperators, onDeleteOperator, onLe
         return options;
     };
 
+    const sortedOperators = selectedOperators.sort((a, b) => b.level - a.level);
+
     const saveOperators = () => {
         isValid
             ? console.log(selectedOperators)
@@ -39,11 +41,11 @@ const Table: React.FC<TableProps> = ({ selectedOperators, onDeleteOperator, onLe
                     <tr>
                         <th>Operator</th>
                         <th>Level</th>
-                        <th>Action</th>
+                        <th style={{ display: "none" }}>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {selectedOperators.map(operator => (
+                    {sortedOperators.map(operator => (
                         <tr key={operator.name}>
                             <td>{operator.name}</td>
                             <td>
