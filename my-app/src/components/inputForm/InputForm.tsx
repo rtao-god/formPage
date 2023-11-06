@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import cl from "./index.module.css";
+import cl from "./index.module.sass";
 import imgTrash from "../../photo/icons/trash.jpg";
 
 type InputFormProps = {
