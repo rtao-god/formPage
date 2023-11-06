@@ -37,16 +37,3 @@
     transform: rotate(360deg);
   }
 }
-
-
-.btnSave {
-  border-radius: 2px;
-  background: var(--Blue, #3265B1);
-  width: 206px;
-  padding: 12px 16px;
-  color: white;
-  border: 0;
-  cursor: pointer;
-  margin-top: 200px;
-  margin-left: 300px;
-}
