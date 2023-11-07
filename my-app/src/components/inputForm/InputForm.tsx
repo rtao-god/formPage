@@ -34,13 +34,12 @@ const InputForm: React.FC<InputFormProps> = ({ isValid, setIsValid }) => {
                     type="text"
                     value={inputValue}
                     onChange={handleInputChange}
-                    onBlur={() => setIsTouched(true)}
                 />
                 <div onClick={handleDeleteClick} className={cl.delete}>
                     <img src={imgTrash} alt="Delete" />
                     <span> Delete </span>
                 </div>
-                {!isValid && isTouched && <div className={cl.error}> The name must be at least 3 characters long. </div>}
+                {!isValid && isTouched && <p className={cl.error}> The name must be at least 3 characters long. </p>}
             </div>
         </>
     );
