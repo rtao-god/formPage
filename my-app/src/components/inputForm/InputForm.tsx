@@ -9,8 +9,10 @@ type InputFormProps = {
 
 const InputForm: React.FC<InputFormProps> = ({ isValid, setIsValid }) => {
     const [inputValue, setInputValue] = useState<string>('');
+    const [isTouched, setIsTouched] = useState<boolean>(false);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setIsTouched(true);
         const value = e.target.value;
         setInputValue(value);
         setIsValid(value.length >= 3);
@@ -19,6 +21,7 @@ const InputForm: React.FC<InputFormProps> = ({ isValid, setIsValid }) => {
     const handleDeleteClick = () => {
         setInputValue('');
         setIsValid(false);
+        setIsTouched(false);
     };
 
     return (
@@ -27,19 +30,21 @@ const InputForm: React.FC<InputFormProps> = ({ isValid, setIsValid }) => {
             <div className={cl.inputWrapper}>
                 <input
                     placeholder='Booking department'
-                    className={`${cl.input} ${!isValid ? cl.invalid : ''}`}
+                    className={`${cl.input} ${!isValid && isTouched ? cl.invalid : ''}`}
                     type="text"
                     value={inputValue}
                     onChange={handleInputChange}
+                    onBlur={() => setIsTouched(true)}
                 />
                 <div onClick={handleDeleteClick} className={cl.delete}>
                     <img src={imgTrash} alt="Delete" />
                     <span> Delete </span>
                 </div>
-                {!isValid && <div className={cl.error}> The name must be at least 3 characters long. </div>}
+                {!isValid && isTouched && <div className={cl.error}> The name must be at least 3 characters long. </div>}
             </div>
         </>
     );
 }
+
 
 export default InputForm;

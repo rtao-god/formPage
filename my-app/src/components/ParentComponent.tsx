@@ -10,7 +10,7 @@ type Operator = {
 
 const ParentComponent: React.FC = () => {
     const [selectedOperators, setSelectedOperators] = useState<Operator[]>([]);
-    const [isValid, setIsValid] = useState<boolean>(true);
+    const [isValid, setIsValid] = useState<boolean>(false);
 
     const handleOperatorClick = (operator: Operator) => {
         setSelectedOperators(prevSelectedOperators => {
